@@ -30,6 +30,30 @@
         $house*5;
         ?>
         <hr>
+        <h2>2. Proporcionar los valores de $a, $b, $c como sigue:</h2>
+        <p>
+            $a = “ManejadorSQL”;<br>
+            $b = 'MySQL’;<br>
+            $c = &$a;<br>
+            <?php
+            $a = "ManejadorSQL";
+            $b = 'MySQL';
+            $c = &$a;
+            ?>
+            <h3>a. Ahora muestre el contenido de cada variable</h3>
+            <?php echo "$a <br> $b <br> $c"; ?>
+            <h3>b. Agrega al contenido actual las siguientes asignaciones (describe qué está ocurriendo):</h3>
+            $a = "PHP Server"; //En esta línea se asigna la cadena "PHP Server" a la variable $a<br>
+            $b = &$a; //En esta segunda línea se referencia a $a via $b
+            <?php
+            $a = "PHP Server";
+            $b = &$a;
+            ?>
+            <h3>c. Vuelve a mostrar el contenido de cada uno</h3>
+            <?php
+            echo "$a <br> $b";
+            ?>
+        </p>
       
     </body>
 </html>
