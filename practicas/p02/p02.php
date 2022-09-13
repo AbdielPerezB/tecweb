@@ -51,9 +51,15 @@
             ?>
             <h3>c. Vuelve a mostrar el contenido de cada uno</h3>
             <?php
-            echo "$a <br> $b";
+            echo "$a <br> $b <br> $c";
             ?>
+            <h3>d. Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de asignaciones</h3>
+            En el segundo bloque de asignaciones la variable $a esta tomando el nuevo valor de "PHP Server"<br>
+            y la variable $b esta referenciando a la variable $a, además, la variable $c de igual forma<br>
+            ya estaba referenciando a $a desde el primer bloque de asignaciones, por ello, cuando mandamos<br>
+            a imprimir las tres variables, las tres nos devuelven el mismo texto de "PHP Server"
         </p>
+        <hr>
       
     </body>
 </html>
