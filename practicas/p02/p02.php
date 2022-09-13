@@ -99,6 +99,24 @@
             print_r($z);
             ?>
         </p>
+        <h2>4. Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de<br>
+            la matriz $GLOBALS o del modificador global de PHP.</h2>
+        <p>
+            <?php
+            function mostrarVariables()
+            {
+                global $a, $z, $b, $c;
+                echo $a;
+                echo "<br>";
+                print_r($z);
+                echo "<br>";
+                echo $b;
+                echo "<br>";
+                echo $c;
+            }
+            mostrarVariables();
+            ?>
+        </p>
       
     </body>
 </html>
