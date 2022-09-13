@@ -52,6 +52,7 @@
             <h3>c. Vuelve a mostrar el contenido de cada uno</h3>
             <?php
             echo "$a <br> $b <br> $c";
+            unset($a,$b,$c)
             ?>
             <h3>d. Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de asignaciones</h3>
             En el segundo bloque de asignaciones la variable $a esta tomando el nuevo valor de "PHP Server"<br>
@@ -60,6 +61,7 @@
             a imprimir las tres variables, las tres nos devuelven el mismo texto de "PHP Server"
         </p>
         <hr>
+        <!---->
         <h2>3. Muestra el contenido de cada variable inmediatamente después de cada asignación,<br>
             verificar la evolución del tipo de estas variables (imprime todos los componentes de los<br>
             arreglo):</h2>
@@ -99,6 +101,8 @@
             print_r($z);
             ?>
         </p>
+        <!---->
+        <hr>
         <h2>4. Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de<br>
             la matriz $GLOBALS o del modificador global de PHP.</h2>
         <p>
@@ -117,6 +121,8 @@
             mostrarVariables();
             ?>
         </p>
+        <!---->
+        <hr>
         <h2>5. Dar el valor de las variables $a, $b, $c al final del siguiente script:</h2>
         <p>
             $a = “7 personas”;<br>
@@ -138,6 +144,8 @@
             echo "<br>";
             ?>
         </p>
+        <!---->
+        <hr>
         <h2>6. Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
             usando la función var_dump(< datos >).</h2>
         <p>
@@ -172,6 +180,7 @@
 
             echo "<br>";
             ?>
+            <!---->
             <h3>a. Después investiga una función de PHP que permita transformar el valor booleano de $c y $e<br>
                 en uno que se pueda mostrar con un echo:</h3>
                 <?php
@@ -182,7 +191,11 @@
                 echo $e;
                 echo "<br>";
                 ?>
+
+            <!---->
         </p>
+        <!---->
+        <hr>
         <h2>7. Usando la variable predefinida $_SERVER, determina lo siguiente:</h2>
         <p>
             a. La versión de Apache y PHP: <?= $_SERVER['SERVER_SIGNATURE'] ?>
@@ -192,6 +205,7 @@
             c. El idioma del navegador (cliente): <?= $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?>
             <br>
         </p>
+        <!---->
       
     </body>
 </html>
