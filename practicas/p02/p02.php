@@ -138,6 +138,42 @@
             echo "<br>";
             ?>
         </p>
+        <h2>6. Dar y comprobar el valor booleano de las variables $a, $b, $c, $d, $e y $f y muéstralas
+            usando la función var_dump(< datos >).</h2>
+        <p>
+            <?php
+            $a = "0";
+            var_dump($a);
+
+            echo "<br>";
+            
+            $b = "TRUE";
+            var_dump($b);
+
+            echo "<br>";
+            
+            $c = FALSE;
+            var_dump($c);
+
+            echo "<br>";
+            
+            $d = ($a OR $b);
+            var_dump($d);
+
+            echo "<br>";
+            
+            $e = ($a AND $c);
+            var_dump($e);
+
+            echo "<br>";
+            
+            $f = ($a XOR $b);
+            var_dump($f);
+
+            echo "<br>";
+            ?>
+
+        </p>
       
     </body>
 </html>
