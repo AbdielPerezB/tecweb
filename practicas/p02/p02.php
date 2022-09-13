@@ -182,8 +182,15 @@
                 echo $e;
                 echo "<br>";
                 ?>
-
-
+        </p>
+        <h2>7. Usando la variable predefinida $_SERVER, determina lo siguiente:</h2>
+        <p>
+            a. La versión de Apache y PHP: <?= $_SERVER['SERVER_SIGNATURE'] ?>
+            <br>
+            b. El nombre del sistema operativo (servidor): <?= $_SERVER['SERVER_NAME'] ?>
+            <br>
+            c. El idioma del navegador (cliente): <?= $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?>
+            <br>
         </p>
       
     </body>
