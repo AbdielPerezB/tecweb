@@ -172,6 +172,17 @@
 
             echo "<br>";
             ?>
+            <h3>a. Después investiga una función de PHP que permita transformar el valor booleano de $c y $e<br>
+                en uno que se pueda mostrar con un echo:</h3>
+                <?php
+                $c = settype($c,"int");
+                $e = settype($e,"int");
+                echo $c;
+                echo "<br>";
+                echo $e;
+                echo "<br>";
+                ?>
+
 
         </p>
       
