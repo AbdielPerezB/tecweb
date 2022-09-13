@@ -23,11 +23,11 @@
         <?php
         $_myvar;
         $_7var;
-        myvar;
+        //myvar;
         $myvar;
         $var7;
         $_element1;
-        $house*5;
+        //$house*5;
         ?>
         <hr>
         <h2>2. Proporcionar los valores de $a, $b, $c como sigue:</h2>
@@ -60,6 +60,45 @@
             a imprimir las tres variables, las tres nos devuelven el mismo texto de "PHP Server"
         </p>
         <hr>
+        <h2>3. Muestra el contenido de cada variable inmediatamente después de cada asignación,<br>
+            verificar la evolución del tipo de estas variables (imprime todos los componentes de los<br>
+            arreglo):</h2>
+        <p>
+            <?php
+            $a = "PHP5";
+            echo $a;
+            
+            echo"<br>";
+            
+            $z[] = &$a;
+            print_r($z);
+            
+            echo "<br>";
+            
+            $b = "5a version de PHP";
+            echo $b;
+            
+            echo "<br>";
+            
+            $c = settype($b,"integer")*10;
+            echo $c;
+            
+            echo"<br>";
+            
+            $a .= strval($b);
+            echo $a;
+            
+            echo "<br>";
+            
+            $b *= $c;
+            echo $b;
+            
+            echo "<br>";
+            
+            $z[0] = "MySQL";
+            print_r($z);
+            ?>
+        </p>
       
     </body>
 </html>
