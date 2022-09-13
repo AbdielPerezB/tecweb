@@ -117,6 +117,27 @@
             mostrarVariables();
             ?>
         </p>
+        <h2>5. Dar el valor de las variables $a, $b, $c al final del siguiente script:</h2>
+        <p>
+            $a = “7 personas”;<br>
+            $b = (integer) $a;<br>
+            $a = “9E3”;<br>
+            $c = (double) $a;<br>
+            <?php
+            $a = "7 personas";
+            $b = intval($a);
+            $a = "9E3";
+            $c = doubleval($a);
+
+            echo "<br>";
+            echo $a;
+            echo "<br>";
+            echo $b;
+            echo "<br>";
+            echo $c;
+            echo "<br>";
+            ?>
+        </p>
       
     </body>
 </html>
