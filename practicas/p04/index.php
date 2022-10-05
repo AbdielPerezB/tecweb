@@ -42,7 +42,7 @@
         <p>
             R:
             <?php
-            // AQUÍ VA EL CÓDIGO DE SOLUCIÓN
+            imparparimpar();
             ?>
         </p>
     </div>

@@ -8,4 +8,36 @@ function multiplo5y7($numero) {
     }
 }
 
+function imparparimpar(){
+    $arreglo = [3];
+    $matriz = [];
+
+    $contador = 0;
+    do{
+        global $arreglo;
+        global $matriz;
+        
+        $a = rand(1,1000);
+        $b = rand(1,1000);
+        $c = rand(1,1000);
+        
+        $arreglo[0] = $a;
+        $arreglo[1] = $b;
+        $arreglo[2] = $c;
+        
+        $matriz[] = $arreglo;
+        
+        $contador++;
+
+    }while(($a%2 == 0) || ($b%2 != 0) || ($c%2 == 0));
+
+    foreach($matriz as $fila){
+        echo $fila[0]." ".$fila[1]." ".$fila[2];
+        echo "<br>";
+    }
+    echo "<br>";
+    $elementos = $contador*3;
+    echo "$elementos elementos obtenidos de $contador iteraciones";
+}
+
 ?>
