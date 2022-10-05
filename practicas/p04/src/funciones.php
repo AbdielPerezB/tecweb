@@ -59,4 +59,17 @@ function ejercicio3($numero){
     }while($numero_random%$numero != 0);
 }*/
 
+function ejercicio4(){
+    $arreglo = [];
+	
+    for($i = 97; $i<123; $i++){
+    $arreglo[$i] = chr($i);	
+    }
+
+    foreach($arreglo as $key => $elemento){
+        echo "$key => $elemento";
+        echo "<br>";
+        
+    }
+}
 ?>
