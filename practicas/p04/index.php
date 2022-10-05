@@ -51,9 +51,14 @@
         <h3>Ejercicio 3</h3>
         <p>Utiliza un ciclo <strong>while</strong> para encontrar el primer número entero obtenido aleatoriamente, pero que además sea múltiplo de un número dado.</p>
         <p>
-            R:
+            R:<br>
             <?php
-            // AQUÍ VA EL CÓDIGO DE SOLUCIÓN
+            if(!empty($_GET['numero_ejercicio3'])){
+                $numero_ejercicio3 = $_GET['numero_ejercicio3'];
+                ejercicio3($numero_ejercicio3);
+            }else{
+                echo 'vacio';
+            }
             ?>
         </p>
     </div>

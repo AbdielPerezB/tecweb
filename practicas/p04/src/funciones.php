@@ -40,4 +40,23 @@ function imparparimpar(){
     echo "$elementos elementos obtenidos de $contador iteraciones";
 }
 
+function ejercicio3($numero){
+    $numero_random = rand();
+    echo $numero_random;
+    echo "<br>";
+    while($numero_random%$numero != 0){
+        $numero_random = rand();
+        echo $numero_random;
+        echo "<br>";
+    }
+}
+//variante do-while
+/*function ejercicio3($numero){
+    do{
+        $numero_random = rand();
+        echo $numero_random;
+        echo "<br>";
+    }while($numero_random%$numero != 0);
+}*/
+
 ?>
