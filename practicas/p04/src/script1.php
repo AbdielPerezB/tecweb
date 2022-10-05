@@ -23,8 +23,13 @@
             $sex = $_POST['sexo'];
 
             if (!empty($age)&&!empty($sex)) {
-                echo '<p>Edad: '.$age.'<br>';
-                echo 'Sexo: '.$sex.'</p>';
+				if((strtolower($sex) == "femenino")&&($age>=18)&&($age<=35)){
+					echo "Bienvenida, usted esta en el rango de edad permitido";
+					echo '<p>Edad: '.$age.'<br>';
+                	echo 'Sexo: '.$sex.'</p>';
+				}else{
+					echo "Bienbenido/a";
+				}
             }
         ?>
 	</body>
