@@ -123,5 +123,29 @@
             </form>
         </p>
     </div>
+    <div>
+        <h3>Ejercicio 6</h3>
+        <p>
+            Formulario para la consulta de autos:
+        </p>
+        <p>
+            <form id="formulario2-1" action="./src/formulario2-1.php" method="post">
+            <fieldset>
+            <legend>Consulta por Matrícula</legend>
+                <ol>
+                <li><label>Ingrese matrícula:</label> <input type="text" name="matricula"></li><input type="submit" value="Buscar">
+                </ol>
+            </fieldset>
+            </form>
+        </p>
+        <p>
+            <form id="formulario2-2" action="./src/formulario2-2.php" method="post">
+            <fieldset>
+            <legend>Consultar todo el catálogo</legend>
+                <input type="submit" value="Ver todo">
+            </fieldset>
+            </form>
+        </p>
+    </div>
 </body>
 </html>
