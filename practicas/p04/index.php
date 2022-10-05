@@ -73,25 +73,7 @@
             ?>
         </p>
     </div>
-    <div>
         <h3>Ejercicio 5</h3>
-        <p>Crear un arreglo cuyos <strong>índices</strong> van de 97 a 122 y cuyos <strong>valores</strong> son las letras de la 'a' a la 'z'. Usa la función <strong>chr(n)</strong> que devuelve el caracter cuyo código ASCII es <strong>n</strong> para poner el valor en cada índice. Es decir:</p>
-        <p>
-            [97] => a <br>
-            [98] => b <br>
-            [99] => c <br>
-            … <br>
-            [122] => z
-        </p>
-        <p>
-            R:
-            <?php
-            // AQUÍ VA EL CÓDIGO DE SOLUCIÓN
-            ?>
-        </p>
-    </div>
-    <div>
-        <h3>Ejercicio 6</h3>
         <p>
             Usar las variables <strong>$edad</strong> y <strong>$sexo</strong> en una instrucción if para identificar una persona de sexo "femenino", 
             cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de bienvenida apropiado. Por ejemplo:
