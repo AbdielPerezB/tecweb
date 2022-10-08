@@ -1,0 +1,5 @@
+Script para base de datos MySQL
+
+INSERT INTO productos 
+(nombre, marca, modelo, precio, detalles, unidades, imagen)
+ VALUES ('Termo digital', 'VAGABOX', 'MX-2600', '197.28', 'Acero inoxidable, inteligente, 500ml', 790, 'img/termo_MX-2600.png');
