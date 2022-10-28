@@ -38,7 +38,7 @@
         /** script de insersión a la BD. Lo utilizaremos despues de validar que no se repita la marca ni el modelo
          * en el producto que queremos insertar
         */
-        $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
+        $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', 0)";
 
         /** Validamos que no se repita la marca*/
         if ( mysqli_num_rows($link->query("SELECT * FROM productos WHERE marca = '{$marca}'")) != 0 ) 
@@ -48,7 +48,7 @@
         /*Validamos que no se repita el modelo */
         elseif(mysqli_num_rows($result = $link->query("SELECT * FROM productos WHERE modelo = '{$modelo}'")) != 0)
         {
-            echo '<h1><strong>Error:</strong> El modelo está repetida</h1>';;
+            echo '<h1><strong>Error:</strong> El modelo está repetido</h1>';;
         }
         /*Despues de validar que no se repita la marca y modelo insertamos */
         elseif( $link->query($sql) ) 
