@@ -35,9 +35,23 @@
             /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
         }
 
-        /** Crear una tabla que no devuelve un conjunto de resultados */
+        /** script de insersión a la BD. Lo utilizaremos despues de validar que no se repita la marca ni el modelo
+         * en el producto que queremos insertar
+        */
         $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
-        if ( $link->query($sql) ) 
+
+        /** Validamos que no se repita la marca*/
+        if ( mysqli_num_rows($link->query("SELECT * FROM productos WHERE marca = '{$marca}'")) != 0 ) 
+        {
+            echo '<h1><strong>Error:</strong> La marca está repetida</h1>';
+        }
+        /*Validamos que no se repita el modelo */
+        elseif(mysqli_num_rows($result = $link->query("SELECT * FROM productos WHERE modelo = '{$modelo}'")) != 0)
+        {
+            echo '<h1><strong>Error:</strong> El modelo está repetida</h1>';;
+        }
+        /*Despues de validar que no se repita la marca y modelo insertamos */
+        elseif( $link->query($sql) ) 
         {
             echo '<h1>Datos insertados con éxito</h1>';
             echo '<p>A continuación se muestra el resumen de los datos insertados: </p>';
