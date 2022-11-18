@@ -50,7 +50,7 @@
                         <p class="mensaje-de-validacion" id="validacion-detalles"></p>
                     </li>
                     <li>
-                        <label for="ruta-img">Ruta de la Imagen: </label><input id="ruta-img" name="ruta_img_producto" type="text" size="20" maxlength="200" placeholder="ej: img/imagen.png" value="<?= !empty($_POST['imagen'])?$_POST['imagen']:""?>">
+                        <label for="ruta-img">Ruta de la Imagen: </label><input id="ruta-img" name="ruta_img_producto" type="text" size="20" maxlength="200" placeholder="ej: img/imagen.png" value="<?= !empty($_POST['imagen'])?$_POST['imagen']:""?>"> //Revisar lo de QuerySelector para esta parte
                         <p class="mensaje-de-validacion" id="validacion-img"></p>
                     </li>
                 </ul>
