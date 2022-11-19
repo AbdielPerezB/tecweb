@@ -10,7 +10,30 @@
         //Validamos que no exista un producto en la db con el mismo nombre
         if ( mysqli_num_rows($conexion->query("SELECT * FROM productos WHERE nombre = '{$jsonOBJ->nombre}'")) == 0 ){
             //si no existe, insertamos el producto
-            echo 'Producto listo para insertar';
+            //QUERY
+            $sql = "INSERT INTO productos VALUES (null, 
+            '{$jsonOBJ->nombre}', 
+            '{$jsonOBJ->marca}', 
+            '{$jsonOBJ->modelo}', 
+            {$jsonOBJ->precio}, 
+            '{$jsonOBJ->detalles}', 
+            {$jsonOBJ->unidades}, 
+            '{$jsonOBJ->imagen}', 
+            0)";
+
+            if($conexion->query($sql)){
+                echo '[SERVIDOR]: Dato Insertado';
+                echo 'Nombre: '.$jsonOBJ->nombre;
+                echo 'marca: '.$jsonOBJ->marca;
+                echo 'modelo: '.$jsonOBJ->modelo;
+                echo 'Precio: '.$jsonOBJ->precio;
+                echo 'Unidades: '.$jsonOBJ->unidades;
+                echo 'Detalles: '.$jsonOBJ->detalles;
+                echo 'Ruta de la imagen: '.$jsonOBJ->imagen;
+
+            }else{
+                echo 'Falló la insersión';
+            }
         }
         //si ya existe en la db verificamos que este marcado como eliminado
         else{
@@ -25,53 +48,40 @@
                         }
                     }
                 }
+                $result->free();
 
                 if($productos_eliminado){
-                    echo 'Producto listo para insertar';
+                    //Insertamos
+                    //QUERY
+                    $sql = "INSERT INTO productos VALUES (null, 
+                    '{$jsonOBJ->nombre}', 
+                    '{$jsonOBJ->marca}', 
+                    '{$jsonOBJ->modelo}', 
+                    {$jsonOBJ->precio}, 
+                    '{$jsonOBJ->detalles}', 
+                    {$jsonOBJ->unidades}, 
+                    '{$jsonOBJ->imagen}', 
+                    0)";
+
+                    if($conexion->query($sql)){
+                        echo '[SERVIDOR]: Dato Insertado';
+                        echo 'Nombre: '.$jsonOBJ->nombre;
+                        echo 'marca: '.$jsonOBJ->marca;
+                        echo 'modelo: '.$jsonOBJ->modelo;
+                        echo 'Precio: '.$jsonOBJ->precio;
+                        echo 'Unidades: '.$jsonOBJ->unidades;
+                        echo 'Detalles: '.$jsonOBJ->detalles;
+                        echo 'Ruta de la imagen: '.$jsonOBJ->imagen;
+
+                    }else{
+                        echo 'Falló la insersión';
+                    }
                 }else{
-                    echo 'Error el producto ya existe en la Base de Datos';
+                    echo '[SERVIDOR]:Error el nombre de este producto ya existe en la Base de Datos';
                 }
+
             }
         }
-           
-
-
-
-        /*
-        //QUERY
-        $sql = "INSERT INTO productos VALUES (null, 
-        '{$jsonOBJ->nombre}', 
-        '{$jsonOBJ->marca}', 
-        '{$jsonOBJ->modelo}', 
-        {$jsonOBJ->precio}, 
-        '{$jsonOBJ->detalles}', 
-        {$jsonOBJ->unidades}, 
-        '{$jsonOBJ->imagen}', 
-        0)";
-
-        if($conexion->query($sql)){
-            echo 'Dato Insertado';
-            echo '[SERVIDOR] Nombre: '.$jsonOBJ->nombre;
-            echo '[SERVIDOR] marca: '.$jsonOBJ->marca;
-            echo '[SERVIDOR] modelo: '.$jsonOBJ->modelo;
-            echo '[SERVIDOR] Precio: '.$jsonOBJ->precio;
-            echo '[SERVIDOR] Unidades: '.$jsonOBJ->unidades;
-            echo '[SERVIDOR] Detalles: '.$jsonOBJ->detalles;
-            echo '[SERVIDOR] Ruta de la imagen: '.$jsonOBJ->imagen;
-
-        }else{
-            echo 'Falló la insersión';
-        }*/
-
-
-        /**
-         * SUSTITUYE LA SIGUIENTE LÍNEA POR EL CÓDIGO QUE REALICE
-         * LA INSERCIÓN A LA BASE DE DATOS. COMO RESPUESTA REGRESA
-         * UN MENSAJE DE ÉXITO O DE ERROR, SEGÚN SEA EL CASO.
-         */
-        /*echo '[SERVIDOR] Nombre: '.$jsonOBJ->nombre;
-        echo '[SERVIDOR] Precio: '.$jsonOBJ->precio;
-        echo '[SERVIDOR] marca: '.$jsonOBJ->marca;
-        echo '[SERVIDOR] modelo: '.$jsonOBJ->modelo;*/
+        $conexion->close();
     }
 ?>

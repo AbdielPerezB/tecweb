@@ -4,17 +4,19 @@
     // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
     $data = array();
     // SE VERIFICA HABER RECIBIDO EL ID
-    if( isset($_POST['id']) ) {
-        $id = $_POST['id'];
+    if( isset($_POST['texto']) ) {
+        $texto = $_POST['texto'];
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-        if ( $result = $conexion->query("SELECT * FROM productos WHERE id = '{$id}'") ) {
+        if ( $result = $conexion->query("SELECT * FROM productos WHERE nombre LIKE '%{$texto}%' OR marca LIKE '%{$texto}%' OR detalles LIKE '%{$texto}%'") ) {
             // SE OBTIENEN LOS RESULTADOS
-			$row = $result->fetch_array(MYSQLI_ASSOC);
+			$filas = $result->fetch_all(MYSQLI_ASSOC);
 
-            if(!is_null($row)) {
+            if(!is_null($filas)) {
                 // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
-                foreach($row as $key => $value) {
-                    $data[$key] = utf8_encode($value);
+                foreach($filas as $numFila => $fila) {
+                    foreach($fila as $campo => $valor){
+                        $data[$numFila][$campo] = utf8_encode($valor);
+                    }
                 }
             }
 			$result->free();
