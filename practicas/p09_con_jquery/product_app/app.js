@@ -112,47 +112,47 @@ function buscarProducto(e) {
 
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
 function agregarProducto(e) {
-    e.preventDefault();
+    $(document).on('click', '.agregar', function(){
+        // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
+        var productoJsonString = $('#description').val();
+        // SE CONVIERTE EL JSON DE STRING A OBJETO
+        var finalJSON = JSON.parse(productoJsonString);
+        // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
+        finalJSON['nombre'] = $('#name').val();
 
-    // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
-    var productoJsonString = $('#description').val();
-    // SE CONVIERTE EL JSON DE STRING A OBJETO
-    var finalJSON = JSON.parse(productoJsonString);
-    // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-    finalJSON['nombre'] = $('#name').val();
-
-    //Validamos el formulario
-    if(finalJSON['nombre'] == ''){//El nombre no puede estar vacío
-        alert('[CLIENTE]: Error, el nombre no puede estar vacío');
-    }else if(finalJSON['marca'] == ''){//La marca no puede estar vacía
-        alert('[CLIENTE]: Error, la marca no puede estar vacía');
-    }else if(finalJSON['modelo'] == '' || finalJSON['modelo'].length > 25){//La marca no puede estar vacía y tener máximo 25 caracteres
-        alert('[CLIENTE]: Error en el modelo');
-    }else if(finalJSON['precio'] == '' || finalJSON['precio'] <= 99.99){//El precio debe ser requerido y tener mínimo 99.99
-        alert('[CLIENTE]: Error, el precio debe ser mayor a $99.99');
-    }else if(finalJSON['detalles'].length > 250){//Los detalles son opcionales y de haber son máximo 250 caracteres
-        alert('[CLIENTE]: Los detalles no deben exceder los 250 caracteres');
-    }else if(finalJSON['unidades'] < 0){//Las unidades deben ser requridas y mayor o igual a cero
-        alert('[CLIENTE]: Las unidades deben ser mayor o igual a cero');
-    }else if(finalJSON['imagen'] == ''){
-        finalJSON['imagen'] = 'img/default.png';
-    }else{
-        // SE OBTIENE EL STRING DEL JSON FINAL
-        productoJsonString = JSON.stringify(finalJSON,null,2);
-        console.log(productoJsonString);
-        $.post('./backend/product-add.php', {datos: productoJsonString}, function(response) {
-            let respuesta = JSON.parse(response);
-            let template_bar = '';
-            template_bar += `
-                        <li style="list-style: none;">status: ${respuesta.status}</li>
-                        <li style="list-style: none;">message: ${respuesta.message}</li>
-                    `;
-            $('#container').html(template_bar);
-            $('#product-result').show();
-            listarProductos();
-            
-        });
-    }
+        //Validamos el formulario
+        if(finalJSON['nombre'] == ''){//El nombre no puede estar vacío
+            alert('[CLIENTE]: Error, el nombre no puede estar vacío');
+        }else if(finalJSON['marca'] == ''){//La marca no puede estar vacía
+            alert('[CLIENTE]: Error, la marca no puede estar vacía');
+        }else if(finalJSON['modelo'] == '' || finalJSON['modelo'].length > 25){//La marca no puede estar vacía y tener máximo 25 caracteres
+            alert('[CLIENTE]: Error en el modelo');
+        }else if(finalJSON['precio'] == '' || finalJSON['precio'] <= 99.99){//El precio debe ser requerido y tener mínimo 99.99
+            alert('[CLIENTE]: Error, el precio debe ser mayor a $99.99');
+        }else if(finalJSON['detalles'].length > 250){//Los detalles son opcionales y de haber son máximo 250 caracteres
+            alert('[CLIENTE]: Los detalles no deben exceder los 250 caracteres');
+        }else if(finalJSON['unidades'] < 0){//Las unidades deben ser requridas y mayor o igual a cero
+            alert('[CLIENTE]: Las unidades deben ser mayor o igual a cero');
+        }else if(finalJSON['imagen'] == ''){
+            finalJSON['imagen'] = 'img/default.png';
+        }else{
+            // SE OBTIENE EL STRING DEL JSON FINAL
+            productoJsonString = JSON.stringify(finalJSON,null,2);
+            console.log(productoJsonString);
+            $.post('./backend/product-add.php', {datos: productoJsonString}, function(response) {
+                let respuesta = JSON.parse(response);
+                let template_bar = '';
+                template_bar += `
+                            <li style="list-style: none;">status: ${respuesta.status}</li>
+                            <li style="list-style: none;">message: ${respuesta.message}</li>
+                        `;
+                $('#container').html(template_bar);
+                $('#product-result').show();
+                listarProductos();
+                
+            });
+        }
+    });
 }
 
 // FUNCIÓN CALLBACK DE BOTÓN "Eliminar"
