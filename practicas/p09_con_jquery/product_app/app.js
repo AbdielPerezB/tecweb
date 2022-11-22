@@ -19,6 +19,7 @@ function init() {
     // SE LISTAN TODOS LOS PRODUCTOS
     listarProductos();
     buscarProducto();
+    eliminarProducto();
 }
 
 // FUNCIÓN CALLBACK AL CARGAR LA PÁGINA O AL AGREGAR UN PRODUCTO
@@ -45,7 +46,7 @@ function listarProductos() {
                             <td>${producto.nombre}</td>
                             <td><ul>${descripcion}</ul></td>
                             <td>
-                                <button class="product-delete btn btn-danger" onclick="eliminarProducto()">
+                                <button class="product-delete btn btn-danger">
                                     Eliminar
                                 </button>
                             </td>
@@ -89,7 +90,7 @@ function buscarProducto(e) {
                                     <td>${producto.nombre}</td>
                                     <td><ul>${descripcion}</ul></td>
                                     <td>
-                                        <button class="product-delete btn btn-danger" onclick="eliminarProducto()">
+                                        <button class="product-delete btn btn-danger">
                                             Eliminar
                                         </button>
                                     </td>
@@ -114,11 +115,11 @@ function agregarProducto(e) {
     e.preventDefault();
 
     // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
-    var productoJsonString = document.getElementById('description').value;
+    var productoJsonString = $('#description').val();
     // SE CONVIERTE EL JSON DE STRING A OBJETO
     var finalJSON = JSON.parse(productoJsonString);
     // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-    finalJSON['nombre'] = document.getElementById('name').value;
+    finalJSON['nombre'] = $('#name').val();
 
     //Validamos el formulario
     if(finalJSON['nombre'] == ''){//El nombre no puede estar vacío
@@ -170,38 +171,25 @@ function agregarProducto(e) {
 
 // FUNCIÓN CALLBACK DE BOTÓN "Eliminar"
 function eliminarProducto() {
-    if( confirm("De verdad deseas eliinar el Producto") ) {
-        var id = event.target.parentElement.parentElement.getAttribute("productId");
-        //NOTA: OTRA FORMA PODRÍA SER USANDO EL NOMBRE DE LA CLASE, COMO EN LA PRÁCTICA 7
-
-        // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
-        var client = getXMLHttpRequest();
-        client.open('GET', './backend/product-delete.php?id='+id, true);
-        client.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        client.onreadystatechange = function () {
-            // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
-            if (client.readyState == 4 && client.status == 200) {
-                console.log(client.responseText);
-                // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
-                let respuesta = JSON.parse(client.responseText);
-                // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
+    $(document).on('click', '.product-delete', function(){
+        if( confirm("De verdad deseas eliminar el Producto") ) {
+            let element = $(this)[0].parentElement.parentElement;
+            let id = $(element).attr('productId');
+            console.log(id);
+            $.post('./backend/product-delete.php', {id}, function(response) {
+                let respuesta = JSON.parse(response);
                 let template_bar = '';
                 template_bar += `
                             <li style="list-style: none;">status: ${respuesta.status}</li>
                             <li style="list-style: none;">message: ${respuesta.message}</li>
                         `;
-
-                // SE HACE VISIBLE LA BARRA DE ESTADO
-                document.getElementById("product-result").className = "card my-4 d-block";
-                // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
-                document.getElementById("container").innerHTML = template_bar;
-
-                // SE LISTAN TODOS LOS PRODUCTOS
+                $('#container').html(template_bar);
+                $('#product-result').show();
                 listarProductos();
-            }
-        };
-        client.send();
-    }
+                
+            });
+        }
+    });
 }
 
 // SE CREA EL OBJETO DE CONEXIÓN COMPATIBLE CON EL NAVEGADOR
